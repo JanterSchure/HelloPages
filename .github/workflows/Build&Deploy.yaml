@@ -23,22 +23,22 @@ jobs:
       with:
         dotnet-version: 9.0.x
     - name: Restore dependencies
-      run: dotnet restore Blazor-Meets-GithubPages/Blazor-Meets-GithubPages.csproj
+      run: dotnet restore MyBlazorApp.csproj
 
     - name: Build
-      run: dotnet build Blazor-Meets-GithubPages/Blazor-Meets-GithubPages.csproj --no-restore
+      run: dotnet build MyBlazorApp.csproj --no-restore
 
     - name: Test
-      run: dotnet test Blazor-Meets-GithubPages/Blazor-Meets-GithubPages.csproj --no-build --verbosity normal
+      run: dotnet test MyBlazorApp.csproj --no-build --verbosity normal
 
     - name: Publish
-      run: dotnet publish Blazor-Meets-GithubPages/Blazor-Meets-GithubPages.csproj -c release -o release
+      run: dotnet publish MyBlazorApp.csproj -c release -o release
     
     # Changes to make the Blazor app work with GitHub Pages
     # Changes the base-tag in index.html from '/' to 'Blazor-Meets-GithubPages' to match GitHub Pages repository subdirectory
     # This is required because it needs to point to the correct path when the app is hosted on GitHub Pages
-    - name: Change base-tag in index.html from / to Blazor-Meets-GithubPages
-      run: sed -i 's|<base href="/" />|<base href="/Blazor-Meets-GithubPages/" />|g' release/wwwroot/index.html
+    - name: Change base-tag in index.html from / to MyBlazorApp
+      run: sed -i 's|<base href="/" />|<base href="/MyBlazorApp/" />|g' release/wwwroot/index.html
 
     # add .nojekyll file to tell GitHub pages to not treat this as a Jekyll project. (Allow files and folders starting with an underscore)
     - name: Add .nojekyll file
