@@ -39,7 +39,7 @@ jobs:
     # This is required because it needs to point to the correct path when the app is hosted on GitHub Pages
     - name: Change base-tag in index.html from / to MyBlazorApp
       run: sed -i 's|<base href="/" />|<base href="/MyBlazorApp/" />|g' release/wwwroot/index.html
-
+#test
     # add .nojekyll file to tell GitHub pages to not treat this as a Jekyll project. (Allow files and folders starting with an underscore)
     - name: Add .nojekyll file
       run: touch release/wwwroot/.nojekyll
